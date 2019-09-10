@@ -1,28 +1,45 @@
-# Revisao
+# Revisão para NAC - Fiap
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
+- Criação do projeto
 
-## Development server
+> `ng n <nome-projeto>`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Criação do componente
 
-## Code scaffolding
+> `ng g c <nome-componente>`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Criamos um arquivo dentro de app chamado *index.ts*, dentro deste arquivo vamos exportar os componentes:
 
-## Build
+``` javascript
+export * from './list/list.component';
+export * from './user/user.component';
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- O arquivo *app.component.html* deixamos somente o `<router-outlet>`
 
-## Running unit tests
+- Criamos um *service* usando o comando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> `ng g s CrudService`
 
-## Running end-to-end tests
+Dentro do `crud.service.ts` trabalhamos da seguinte maneira: 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+``` javascript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-## Further help
+@Injectable({
+  providedIn: 'root'
+})
+export class CrudService {
+  url = 'https://reqres.in/api/users';
+  constructor(private http: HttpClient) {  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# angular-revisao
+   // Lista os usuários
+   async list() {
+    return await this.http.get(this.url).toPromise();
+  }
+}
+```
+
+1 - Atribuimos o _endpoint_ que será usado como API
+2 - Criamos uma função para fazer a listagem

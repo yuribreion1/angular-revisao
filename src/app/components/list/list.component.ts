@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from '../../crud.service';
 
 @Component({
   // Tag usada no arquivo HTML
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  users: any;
+  // tslint:disable-next-line: no-shadowed-variable
+  constructor(private CrudService: CrudService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const users = await this.CrudService.list();
+    this.users = users;
   }
 
 }
