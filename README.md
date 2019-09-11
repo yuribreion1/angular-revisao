@@ -45,3 +45,15 @@ export class CrudService {
 2 - Criamos uma função para fazer a listagem
 
 - Adicionamos o Bootstrap `ng add ngx-bootstrap`
+
+- Criamos um novo componente chamado *image* usando o comando `ng g c image`
+
+- Dentro deste componente adicionamos a diretiva *Input* dentro da classe: `@Input() url: string;
+
+- Já no arquivo `image.component.html` vamos receber o atributo passado na variável *url*: `<img [src]="url">`
+
+- Porfim no arquivo `list.component.html` ao invéz de acionar direto a tag *img* vamos chamar o componente da seguinte forma: 
+
+``` html
+<app-image [url]="user.avatar"></app-image>
+```

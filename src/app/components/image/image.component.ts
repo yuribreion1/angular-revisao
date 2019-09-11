@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent implements OnInit {
-  // Passa o valor de um componente para outro
+  // Passa o valor de um componente para outro, personaliza uma entrada de dados
   @Input() url: string;
 
   constructor() { }
