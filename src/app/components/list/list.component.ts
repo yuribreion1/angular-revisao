@@ -15,7 +15,8 @@ export class ListComponent implements OnInit {
 
   async ngOnInit() {
     const users = await this.CrudService.list();
-    this.users = users;
+    // tslint:disable-next-line: no-string-literal
+    this.users = users['data'];
   }
 
 }

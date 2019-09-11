@@ -43,3 +43,5 @@ export class CrudService {
 
 1 - Atribuimos o _endpoint_ que será usado como API
 2 - Criamos uma função para fazer a listagem
+
+- Adicionamos o Bootstrap `ng add ngx-bootstrap`
